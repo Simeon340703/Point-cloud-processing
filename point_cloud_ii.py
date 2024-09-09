@@ -2,7 +2,7 @@ import open3d as o3d
 import numpy as np
 import matplotlib.pyplot as plt
 # Load a point cloud
-pcd = o3d.io.read_point_cloud("data/car.ply")
+pcd = o3d.io.read_point_cloud("car.ply")
 # Visualize the point cloud with normals
 o3d.visualization.draw_geometries([pcd], window_name="Original point cloud")
 # Save the point cloud to a new file
@@ -28,8 +28,8 @@ print(f"FPFH descriptor for point 0: {fpfh.data[:, 0]}")
 #3. Point Cloud Registration with ICP
 
 # Load source and target point clouds
-source = o3d.io.read_point_cloud("data/car.ply")
-target = o3d.io.read_point_cloud("data/000000.pcd")
+source = o3d.io.read_point_cloud("car.ply")
+target = o3d.io.read_point_cloud("000000.pcd")
 
 # Initial transformation (create a 4x4 transformation matrix from rotation)
 trans_init = np.eye(4)  # Start with an identity matrix
@@ -89,8 +89,8 @@ plt.show()
 
 #6. Multi-View Fusion with ICP (Iterative Closest Point)
 # Load two point clouds from different views
-pcd1 = o3d.io.read_point_cloud("data/car.ply")
-pcd2 = o3d.io.read_point_cloud("data/000000.pcd")  # Assuming a different viewpoint
+pcd1 = o3d.io.read_point_cloud("car.ply")
+pcd2 = o3d.io.read_point_cloud("000000.pcd")  # Assuming a different viewpoint
 
 # Apply an initial transformation to simulate two different views
 rotation_matrix = o3d.geometry.get_rotation_matrix_from_xyz([0.1, 0.2, 0.3])
